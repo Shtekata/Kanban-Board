@@ -1,2 +1,2 @@
 # Kanban-Board
-Multy Kanban Board
+Multi purpose Kanban Board
