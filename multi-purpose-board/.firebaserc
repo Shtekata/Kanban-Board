@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "kanban-task-project": {
+      "hosting": {
+        "multi-purpose-board": [
+          "kanban-task-project"
+        ]
+      }
+    }
+  }
+}
