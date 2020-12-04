@@ -15,4 +15,9 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  editTask(task: Task, e: Event): any {
+    e.preventDefault();
+    return this.edit.emit(task);
+  }
+
 }

@@ -4,5 +4,33 @@
 
 .item {
     margin-bottom: 10px;
+}
+
+.item:hover, .textarea:hover {
     cursor: pointer;
+}
+
+.textarea {
+    border: 1px solid #F0F0F0;
+    border-radius: 5px;
+    height: 100px;
+}
+
+.textarea-title {
+    font-size: 16px;
+    font-weight: bold;
+    height: 35px;
+    margin-bottom: 10px;
+}
+
+.textarea, .textarea-title {
+    width: 60px;
+}
+
+.item, .textarea {
+    background-color: ghostwhite;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
