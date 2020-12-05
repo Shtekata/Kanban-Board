@@ -1,0 +1,13 @@
+.welcome {
+    display: inline-block;
+    width: 90%;
+    margin: 10px 30px 40px 30px;
+}
+
+.welcome h3 {
+    font-size: 16px;
+}
+
+.welcome p, .welcome a {
+    font-size: 12px;
+}

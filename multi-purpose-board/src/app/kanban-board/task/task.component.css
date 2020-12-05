@@ -1,0 +1,79 @@
+:host {
+    display: block;
+}
+
+.item {
+    margin-bottom: 10px;
+}
+
+.item:hover, .textarea:hover {
+    cursor: pointer;
+}
+
+.textarea {
+    border: 1px solid #F0F0F0;
+    border-radius: 5px;
+    height: 100px;
+}
+
+.textarea, .textarea-title {
+    /* width: 60px; */
+    resize: none;
+    padding: 5px;
+}
+
+.item, .textarea {
+    background-color: ghostwhite;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textarea-title {
+    font-size: 16px;
+    font-weight: bold;
+    height: 35px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+@media all and (max-width:1399.98px) {
+    #textarea.textarea, #textarea-title.textarea {
+        width: 300px;
+    }
+}
+
+@media all and (max-width:1199.98px) {
+    #textarea.textarea, #textarea-title.textarea {
+        width: 260px;
+    }
+}
+
+@media all and (max-width:991.98px) {
+    #textarea.textarea, #textarea-title.textarea {
+        width: 210px;
+    }
+}
+
+@media all and (max-width:767.98px) {
+    #textarea.textarea, #textarea-title.textarea {
+        width: 145px;
+    }
+}
+
+@media all and (max-width:575.98px) {
+    #textarea.textarea, #textarea-title.textarea {
+        width: 110px;
+    }
+}
+
+@media all and (max-width:499.98px) {
+    #textarea.textarea, #textarea-title.textarea {
+        width: 60px;
+        font-size: 9px;
+    }
+    .list .item .textarea-title {
+        font-size: 12px;
+    }
+}

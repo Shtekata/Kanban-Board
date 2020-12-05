@@ -1,0 +1,29 @@
+@media (max-width: 1279.99px) {
+    .welcome.res {
+        padding: 0.3em 0.5em 0px 0.5em;
+    }
+    .welcome .logged ul {
+        margin: 9px;
+    }
+    .welcome .logged a {
+        padding: 4px 50px;
+    }
+}
+
+@media (max-width: 1023.99px) {
+    .welcome .logged ul {
+        margin: 7px;
+    }
+    .welcome .logged a {
+        padding: 3px 25px;
+    }
+}
+
+@media (max-width: 799.99px) {
+    .welcome .logged ul {
+        margin: 5px;
+    }
+    .welcome .logged a {
+        padding: 2px 10px;
+    }
+}

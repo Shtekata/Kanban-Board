@@ -1,0 +1,16 @@
+<div *ngIf='task' class="theme-content">
+    <div class="theme-title">
+        <div class="theme-name-wrapper">
+            <div class="theme-name">
+                <h2>{{task.title}}</h2>
+                <p>Date: <time>{{task.created_at}}</time></p>
+            </div>
+            <div class="subscribers">
+                <p>Subscribers: <span>{{task.subscribers.length}}</span></p>
+                <!-- <button class="subscribe">Subscribe</button>
+                        <button class="unsubscribe">Unsubscribe</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<app-loader [isLoading]='!task'></app-loader>

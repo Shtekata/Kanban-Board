@@ -1,0 +1,7 @@
+<div class="theme-title" *ngIf='taskList'>
+    <app-past-task-list-item *ngFor='let task of taskList' [task]='task'></app-past-task-list-item>
+    <div *ngIf='taskList.length===0'>No Posts!</div>
+</div>
+<div *ngIf='!taskList'>
+    Loading...
+</div>

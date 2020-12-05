@@ -1,0 +1,145 @@
+.todo-task .item, .todo-task .textarea {
+    color: maroon;
+}
+
+.inProgress-task .item, .inProgress-task .textarea {
+    color: darkslateblue;
+}
+
+.done-task .item, .done-task .textarea {
+    color: darkgreen;
+}
+
+.toolbar {
+    background-color: darkorange;
+    color: darkslateblue;
+    justify-content: space-between;
+}
+
+.toolbar>span {
+    margin-left: 10px;
+}
+
+.content-wrapper {
+    margin: auto;
+    background-color: khaki;
+    padding-top: 20px;
+    color: navy;
+    height: 100vh;
+}
+
+.container-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.list {
+    border: 1px solid #ccc;
+    min-height: 60px;
+    border-radius: 12px;
+}
+
+.title-todo {
+    color: indianred;
+}
+
+.todo-list {
+    background-color: indianred;
+}
+
+.title-inProgress {
+    color: cadetblue;
+}
+
+.inProgress-list {
+    background-color: cadetblue;
+}
+
+.title-done {
+    color: lightgreen;
+}
+
+.done-list {
+    background-color: lightgreen;
+}
+
+app-new-task {
+    margin-bottom: 30px;
+}
+
+.empty-label {
+    font-size: 2em;
+    padding-top: 10px;
+    text-align: center;
+    opacity: 0.2;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms;
+}
+
+.mini-navbar ul {
+    display: flex;
+    background-color: cornsilk;
+    border-radius: 20px;
+    border: 1px solid #00d4ff;
+    font-size: 16px;
+}
+
+.mini-navbar ul li {
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.mini-navbar ul li+li {
+    border-left: 1px solid lightgrey;
+}
+
+@media all and (max-width:3399.98px) {
+    .content-wrapper .container-wrapper .container {
+        width: 400px;
+    }
+}
+
+@media all and (max-width:1399.98px) {
+    .content-wrapper .container-wrapper .container {
+        width: 350px;
+    }
+}
+
+@media all and (max-width:1199.98px) {
+    .content-wrapper .container-wrapper .container {
+        width: 300px;
+    }
+}
+
+@media all and (max-width:991.98px) {
+    .content-wrapper .container-wrapper .container {
+        width: 250px;
+    }
+}
+
+@media all and (max-width:767.98px) {
+    .content-wrapper .container-wrapper .container {
+        width: 185px;
+    }
+}
+
+@media all and (max-width:575.98px) {
+    .content-wrapper .container-wrapper .container {
+        width: 150px;
+    }
+}
+
+@media all and (max-width:499.98px) {
+    .content-wrapper .container-wrapper .container {
+        width: 100px;
+    }
+    .container h2 {
+        font-size: 14px;
+    }
+}
