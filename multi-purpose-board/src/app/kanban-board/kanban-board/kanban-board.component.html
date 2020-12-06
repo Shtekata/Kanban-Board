@@ -4,10 +4,9 @@
             <mat-icon>local_fire_department</mat-icon>
             <span>Shtekata Kanban Board</span>
         </div>
-        <div class="mini-navbar" *ngIf='!isLogged'>
+        <div class="mini-navbar" *ngIf='!user'>
             <ul>
                 <li>
-                    <!-- <a (click)='loginHandler()'>Login</a> -->
                     <a routerLink='/user/login'>Login</a>
                 </li>
                 <li>
@@ -15,10 +14,10 @@
                 </li>
             </ul>
         </div>
-        <div class="mini-navbar" *ngIf='isLogged'>
+        <div class="mini-navbar" *ngIf='user'>
             <ul>
                 <li>
-                    <a routerLink='/user/profile'>John's profile</a>
+                    <a routerLink='/user/profile'>{{user?.email}}</a>
                 </li>
                 <li>
                     <a (click)='logoutHandler()'>Logout</a>

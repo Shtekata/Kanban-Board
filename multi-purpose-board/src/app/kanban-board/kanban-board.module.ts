@@ -29,7 +29,7 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     FormsModule,
     MatInputModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class KanbanBoardModule { }

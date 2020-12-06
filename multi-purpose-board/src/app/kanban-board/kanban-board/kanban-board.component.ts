@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent, TaskDialogResult } from './../task-dialog/task-dialog.component';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthService } from 'src/app/core/auth.service';
+import { IUser } from 'src/app/shared/interfaces';
 
 const getObservable = (collection: AngularFirestoreCollection<Task>) => {
   const subject = new BehaviorSubject([]);
@@ -23,8 +25,10 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
 })
 export class KanbanBoardComponent {
 
-  isLogged = false;
- // todo: Task[] = [
+  get storageUser(): any { return localStorage.getItem('user'); }
+  get user(): any { return this.storageUser !== null ? JSON.parse(this.storageUser) : null; }
+
+  // todo: Task[] = [
   //   { title: 'Buy milk', description: 'Go to the store and buy milk' },
   //   { title: 'Create Kanban board', description: 'Develop a Kanban app' }
   // ];
@@ -38,7 +42,7 @@ export class KanbanBoardComponent {
   inProgress: Observable<any[]> = getObservable(this.store.collection('inProgress'));
   done: Observable<any[]> =  getObservable(this.store.collection('done'));
 
-  constructor(private dialog: MatDialog, private store: AngularFirestore){}
+  constructor(private dialog: MatDialog, private store: AngularFirestore, private authService: AuthService){}
 
   // drop(event: CdkDragDrop<Task[]>): void{
     drop(event: CdkDragDrop<any>): void{
@@ -95,6 +99,7 @@ export class KanbanBoardComponent {
       .subscribe((result: TaskDialogResult) => this.store.collection('todo').add(result.task));
   }
 
-  logoutHandler(): void {}
-
+  logoutHandler(): void {
+    this.authService.logout();
+  }
 }

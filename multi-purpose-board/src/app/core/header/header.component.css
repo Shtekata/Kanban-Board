@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Texturina:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 header {
-    background: rgb(0, 128, 182);
-    background: linear-gradient(0deg, rgba(0, 128, 182, 1) 0%, rgba(0, 128, 182, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    background: linear-gradient(0deg, rgb(182, 179, 0) 0%, rgb(40, 0, 182) 35%, rgb(255, 0, 84) 100%);
     position: sticky;
     top: 0;
 }
@@ -25,13 +25,13 @@ header li {
 }
 
 header a {
-    text-decoration: none;
     color: white;
     cursor: pointer;
 }
 
 nav {
     border-top: 1px solid #00acf4;
+    min-height: 25px;
 }
 
 .logo {
@@ -41,7 +41,7 @@ nav {
 }
 
 .logo-wrap {
-    font-family: 'Parisienne', cursive;
+    font-family: 'Texturina', serif;
     letter-spacing: .5em;
     margin: 0.5em 0;
 }
@@ -58,13 +58,13 @@ p {
     align-items: center;
     width: 75%;
     margin: auto;
+    min-height: 50px;
 }
 
 .mini-navbar ul {
-    background-color: #6ba1b8;
-    border-radius: 5px;
+    background-color: #008000;
+    border-radius: 20px;
     border: 1px solid #00d4ff;
-    border-radius: 0.3em;
     padding-left: 0;
     width: 100%;
 }
@@ -72,4 +72,28 @@ p {
 .mini-navbar ul li+li {
     border-left: 1px solid lightgrey;
     padding-left: .5em;
+}
+
+@media all and (max-width:767.98px) {
+    nav {
+        font-size: 12px;
+    }
+    .mini-navbar-wrap {
+        width: auto;
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width:499.98px) {
+    .logo {
+        font-size: 18px;
+        display: block;
+    }
+    .logo-wrap {
+        margin: 0;
+    }
+    .mini-navbar ul li {
+        padding: 2px;
+        font-size: 12px;
+    }
 }

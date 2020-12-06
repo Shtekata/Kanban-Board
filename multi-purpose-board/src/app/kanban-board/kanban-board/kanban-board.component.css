@@ -25,7 +25,8 @@
     background-color: khaki;
     padding-top: 20px;
     color: navy;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
 }
 
 .container-wrapper {
@@ -141,5 +142,18 @@ app-new-task {
     }
     .container h2 {
         font-size: 14px;
+    }
+    .mini-navbar ul {
+        margin-right: 10px;
+    }
+    .mini-navbar ul li {
+        padding: 0px 5px;
+        font-size: 14px;
+    }
+    .mat-toolbar {
+        padding: 0;
+        flex-direction: column;
+        height: 77px;
+        justify-content: flex-start;
     }
 }

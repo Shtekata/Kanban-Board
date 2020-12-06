@@ -1,7 +1,7 @@
 <header>
     <div class="mini-navbar-wrap">
         <div class="logo-wrap">
-            <p class="logo"><span class="logo">SoftUni Forum</span></p>
+            <p class="logo"><span class="logo">Kanban Board</span></p>
         </div>
         <div class="mini-navbar" *ngIf='!isLogged'>
             <ul>
@@ -28,13 +28,13 @@
     <nav>
         <ul>
             <li>
-                <a routerLink='/home'>Home</a>
+                <a routerLink='/'>Home</a>
             </li>
             <li>
-                <a routerLink='/theme'>Themes</a>
+                <a routerLink='/home'>For Us</a>
             </li>
             <li>
-                <a routerLink='/theme/new'>New Theme</a>
+                <a routerLink='/404'>Something else!</a>
             </li>
             <li>
                 User: {{user |json}}

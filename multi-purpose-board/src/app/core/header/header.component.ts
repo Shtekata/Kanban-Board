@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces';
-import { UserService } from '../../user/user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,20 +14,22 @@ export class HeaderComponent implements OnInit {
   hideNavigation = false;
 
   get isLogged(): boolean{
-    return this.userService.isLogged;
+    return this.authService.isLogged;
   }
 
   get user(): IUser | null{
-    return this.userService.currentUser;
+    // return this.authService.currentUser;
+    return this.authService.user;
   }
 
-  constructor(private userService: UserService, private router: Router, title: Title) { }
+  constructor(private authService: AuthService, private router: Router, title: Title) { }
 
   ngOnInit(): void {
   }
 
-  logoutHandler(): void{
-    this.userService.logout().subscribe(() => this.router.navigate(['/']));
+  logoutHandler(): void {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
 }

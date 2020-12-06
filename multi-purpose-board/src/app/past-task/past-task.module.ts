@@ -11,11 +11,7 @@ const dataDeclExp = [PastTaskListComponent, PastTaskListItemComponent];
 
 @NgModule({
   declarations: [dataDeclExp, DetailComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PastTaskRouterModule
-  ],
+  imports: [CommonModule, SharedModule, PastTaskRouterModule],
   providers: [PastTaskService],
   exports: [dataDeclExp]
 })

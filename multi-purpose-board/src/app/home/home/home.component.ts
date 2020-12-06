@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../user/user.service';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +11,12 @@ export class HomeComponent implements OnInit, DoCheck {
 
   isLogged = false;
 
-  constructor(private userService: UserService, router: Router) { }
+  constructor(private authService: AuthService, router: Router) { }
 
   ngOnInit(): void {
   }
 
   ngDoCheck(): void {
-    this.isLogged = this.userService.isLogged;
+    this.isLogged = this.authService.isLogged;
   }
 }

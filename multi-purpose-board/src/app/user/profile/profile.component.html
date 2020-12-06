@@ -14,6 +14,7 @@
     <button class="edit-button" (click)='toggleEditMode()'>Edit</button>
 </ng-template>
 
+<app-header></app-header>
 <ng-template #editMode>
     <form #f='ngForm' (ngSubmit)='submitHandler(f.value)'>
         <div class="flex">
@@ -53,3 +54,4 @@
     <ng-container *ngTemplateOutlet='inEditMode?editMode:defaultMode'></ng-container>
     <app-loader [isLoading]='isLoading'></app-loader>
 </div>
+<app-footer></app-footer>

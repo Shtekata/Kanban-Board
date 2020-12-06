@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { HomeComponent } from './home/home/home.component';
 import { KanbanBoardComponent } from './kanban-board/kanban-board/kanban-board.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -14,19 +13,24 @@ const routes: Routes = [
             pathMatch: 'full',
             component: KanbanBoardComponent
             },
-               {
+                {
+            path: 'user',
+            canActivateChild: [AuthGuard],
+            loadChildren: () => import('./user/user.module').then(x => x.UserModule)
+            },
+                {
+            path: 'past-task',
+            canActivateChild: [AuthGuard],
+            loadChildren: () => import('./past-task/past-task.module').then(x => x.PastTaskModule)
+            },
+                {
             path: 'home',
-            component: HomeComponent,
-            data: {
-                title: 'HOME'
-                }
+            canActivateChild: [AuthGuard],
+            loadChildren: () => import('./home/home.module').then(x => x.HomeModule)
             },
                 {
             path: '**',
-            component: NotFoundComponent,
-            data: {
-                title: '404'
-               }
+            loadChildren: () => import('./not-found/not-found.module').then(x => x.NotFoundModule)
             }
 
         ]

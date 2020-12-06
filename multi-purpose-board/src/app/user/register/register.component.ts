@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth.service';
 import { emailValidator, rePasswordValidatorFactory } from 'src/app/shared/validators';
-import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css', '../../../assets/css/form-styles.css']
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
@@ -15,29 +15,30 @@ export class RegisterComponent implements OnInit {
   morm: FormGroup;
 
   isLoading = false;
+  errorMessage = '';
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
 
-    const passwordControl = this.fb.control('12345', [Validators.required, Validators.minLength(5)], []);
+    const passwordControl = this.fb.control('111111', [Validators.required, Validators.minLength(5)], []);
 
     this.form = this.fb.group({
-      username: ['shtekata', [Validators.required, Validators.minLength(5)], []],
+      username: ['shtekata', [Validators.required, Validators.minLength(6)], []],
       email: ['gesheval@gmail.com', [Validators.required, emailValidator], []],
       tel: ['887658529', [], []],
       password: passwordControl,
-      rePassword: ['12345', [Validators.required, Validators.minLength(5), rePasswordValidatorFactory(passwordControl)], []]
+      rePassword: ['111111', [Validators.required, Validators.minLength(6), rePasswordValidatorFactory(passwordControl)], []]
     });
   }
 
   ngOnInit(): void {
   }
 
-  submitHandler(): void {
+  async submitHandler(): Promise<any> {
     this.isLoading = true;
     const data = this.form.value;
-    this.userService.register(data).subscribe(x => {
+    await this.authService.register(data).then(x => {
       this.isLoading = false;
       this.router.navigate(['/']);
-    }, (err) => { this.isLoading = false; console.log(err.message); });
+    }, (err) => { this.isLoading = false; this.errorMessage = err.message; });
   }
 }
