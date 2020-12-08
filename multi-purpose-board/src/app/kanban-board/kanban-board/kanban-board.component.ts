@@ -6,7 +6,6 @@ import { TaskDialogComponent, TaskDialogResult } from './../task-dialog/task-dia
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
-import { IUser } from 'src/app/shared/interfaces';
 
 const getObservable = (collection: AngularFirestoreCollection<Task>) => {
   const subject = new BehaviorSubject([]);
@@ -40,7 +39,8 @@ export class KanbanBoardComponent {
   // done: Observable<any[]> = this.store.collection('done').valueChanges({ idField: 'id' });
   todo: Observable<any[]> = getObservable(this.store.collection('todo'));
   inProgress: Observable<any[]> = getObservable(this.store.collection('inProgress'));
-  done: Observable<any[]> =  getObservable(this.store.collection('done'));
+  done: Observable<any[]> = getObservable(this.store.collection('done'));
+  old: Observable<any[]> = getObservable(this.store.collection('old'));
 
   constructor(private dialog: MatDialog, private store: AngularFirestore, private authService: AuthService){}
 
@@ -78,6 +78,10 @@ export class KanbanBoardComponent {
       // } else {
       //   dataList[taskIndex] = task;
       // }
+      if (result.delete && list === 'done') {
+        this.store.collection('old').add(task);
+        this.store.collection('done').doc(task.id).delete();
+      }
       if (result.delete) {
         this.store.collection(list).doc(task.id).delete();
       } else {

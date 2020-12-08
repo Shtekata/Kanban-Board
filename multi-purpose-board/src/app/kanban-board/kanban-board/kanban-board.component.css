@@ -100,6 +100,22 @@ app-new-task {
     border-left: 1px solid lightgrey;
 }
 
+.mini-navbar .old-task-ul {
+    background-color: indigo;
+}
+
+.mini-navbar .old-task-ul:hover {
+    background-color: lightseagreen;
+}
+
+.old-task-a {
+    color: lightseagreen;
+}
+
+.old-task-a:hover {
+    color: indigo;
+}
+
 @media all and (max-width:3399.98px) {
     .content-wrapper .container-wrapper .container {
         width: 400px;

@@ -14,7 +14,7 @@ export class DetailComponent implements OnInit {
 
   constructor(pastTaskService: PastTaskService, activatedRoot: ActivatedRoute) {
     const id = activatedRoot.snapshot.params.id;
-    pastTaskService.loadTask(id).subscribe(x => this.task = x);
+    // pastTaskService.loadTask(id).subscribe(x => this.task = x);
   }
 
   ngOnInit(): void {

@@ -17,7 +17,7 @@
 }
 
 .textarea, .textarea-title {
-    /* width: 60px; */
+    width: 60px;
     resize: none;
     padding: 5px;
 }
@@ -36,6 +36,12 @@
     height: 35px;
     margin-bottom: 10px;
     border: none;
+}
+
+@media all and (max-width:3399.98px) {
+    #textarea.textarea, #textarea-title.textarea {
+        width: 350px;
+    }
 }
 
 @media all and (max-width:1399.98px) {
