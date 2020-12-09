@@ -1,6 +1,23 @@
+div.theme-container {
+    background-color: antiquewhite;
+    border-radius: 5px;
+    color: indigo;
+}
+
 .theme-container a {
-    text-decoration: none;
-    color: inherit;
+    text-decoration: underline;
+    color: indigo;
+    cursor: pointer;
+}
+
+.theme-container a.here {
+    text-decoration: underline;
+    color: darkturquoise;
+    cursor: pointer;
+}
+
+.theme-container a.here:hover {
+    color: deeppink;
 }
 
 .theme-container span {
@@ -57,4 +74,28 @@
 
 time {
     font-weight: bold;
+}
+
+@media all and (max-width:991.98px) {
+    .columns {
+        flex-direction: column;
+    }
+}
+
+@media all and (max-width:767.98px) {
+    .theme-name-wrapper {
+        font-size: 0.7em;
+    }
+}
+
+@media all and (max-width:575.98px) {
+    .theme-name-wrapper {
+        font-size: 0.6em;
+    }
+}
+
+@media all and (max-width:499.98px) {
+    .theme-name-wrapper {
+        font-size: 0.5em;
+    }
 }

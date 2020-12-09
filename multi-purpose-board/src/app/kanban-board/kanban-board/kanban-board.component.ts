@@ -1,13 +1,13 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { Task } from './../task/task';
+import { ITask } from '../../shared/interfaces/task';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent, TaskDialogResult } from './../task-dialog/task-dialog.component';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 
-const getObservable = (collection: AngularFirestoreCollection<Task>) => {
+const getObservable = (collection: AngularFirestoreCollection<ITask>) => {
   const subject = new BehaviorSubject([]);
   // collection.valueChanges({ idField: 'id' }).subscribe((val: Task[]) => {
   collection.valueChanges({ idField: 'id' }).subscribe((val: any) => {
@@ -31,7 +31,7 @@ export class KanbanBoardComponent {
   //   { title: 'Buy milk', description: 'Go to the store and buy milk' },
   //   { title: 'Create Kanban board', description: 'Develop a Kanban app' }
   // ];
-  // inProgress: Task[] = [];
+  // inProgress: ITask[] = [];
   // done: Task[] = [];
 
   // todo: Observable<any[]> = this.store.collection('todo').valueChanges({ idField: 'id' });
@@ -62,7 +62,7 @@ export class KanbanBoardComponent {
     );
   }
 
-  edit(list: 'done'|'todo'|'inProgress', task: Task): void{
+  edit(list: 'done'|'todo'|'inProgress', task: ITask): void{
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '270px',
       data: {
@@ -79,6 +79,8 @@ export class KanbanBoardComponent {
       //   dataList[taskIndex] = task;
       // }
       if (result.delete && list === 'done') {
+        task.executor = this.user.email;
+        task.executed_at = new Date().toDateString();
         this.store.collection('old').add(task);
         this.store.collection('done').doc(task.id).delete();
       }
@@ -100,7 +102,11 @@ export class KanbanBoardComponent {
     dialogRef
       .afterClosed()
       // .subscribe((result: TaskDialogResult) => this.todo.push(result.task));
-      .subscribe((result: TaskDialogResult) => this.store.collection('todo').add(result.task));
+      .subscribe((result: TaskDialogResult) => {
+        result.task.creator = this.user.email;
+        result.task.created_at = new Date().toDateString();
+        this.store.collection('todo').add(result.task);
+      });
   }
 
   logoutHandler(): void {

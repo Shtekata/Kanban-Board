@@ -2,8 +2,7 @@
 footer {
     font-family: 'Texturina', serif;
     background: rgb(182, 179, 0);
-    margin-top: 1em;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     width: 100%;
     max-width: 1366px;
@@ -18,10 +17,6 @@ footer p {
     padding: 0;
     font-size: 0.7em;
     text-align: center;
-}
-
-footer p:first-child {
-    margin-top: 5px;
 }
 
 footer span {

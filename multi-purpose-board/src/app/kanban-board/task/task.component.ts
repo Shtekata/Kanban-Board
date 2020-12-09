@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Task } from './task';
+import { ITask } from '../../shared/interfaces/task';
 
 @Component({
   selector: 'app-task',
@@ -8,14 +8,14 @@ import { Task } from './task';
 })
 export class TaskComponent implements OnInit {
 
-  @Input() task!: Task;
+  @Input() task!: ITask;
   @Output() edit = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  editTask(task: Task, e: Event): any {
+  editTask(task: ITask, e: Event): any {
     e.preventDefault();
     return this.edit.emit(task);
   }

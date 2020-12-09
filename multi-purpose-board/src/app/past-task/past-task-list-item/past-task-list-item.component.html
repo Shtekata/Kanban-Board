@@ -1,22 +1,18 @@
 <div class="theme-container">
     <div class="theme-name-wrapper">
         <div class="theme-name">
-            <a [routerLink]='["/theme/detail", task._id]' class="normal">
-                <h2>{{task.title}}</h2>
+            <a [routerLink]='["/past-task/detail", task.id]' class="normal">
+                <h2>{{task.title|shortFormatText}}</h2>
             </a>
             <div class="columns">
                 <div>
-                    <p>Date: <time>{{task.created_at}}</time></p>
-                    <div class="nick-name">
-                        <p>Username: <span>{{task.creator.username}}</span></p>
-                    </div>
+                    <p><time>{{task.description|shortFormatText}}</time></p>
                 </div>
-                <div class="subscribers">
-                    <!-- <button class="subscribe">Subscribe</button> -->
-                    <p>Subscribers: <span>{{task.subscribers.length}}</span></p>
+                <div class="nick-name">
+                    <p>For Details click <span><a class="here" [routerLink]='["", task.id]'>HERE!</a></span></p>
                 </div>
             </div>
         </div>
-        <!-- <app-post-list [themeId]='theme._id'></app-post-list> -->
     </div>
+    <!-- <app-post-list [themeId]='theme._id'></app-post-list> -->
 </div>

@@ -6,12 +6,13 @@ import { PastTaskListItemComponent } from './past-task-list-item/past-task-list-
 import { PastTaskService } from './past-task.service';
 import { SharedModule } from '../shared/shared.module';
 import { PastTaskRouterModule } from './past-task-routing.module';
+import { CoreModule } from '../core/core.module';
 
 const dataDeclExp = [PastTaskListComponent, PastTaskListItemComponent];
 
 @NgModule({
   declarations: [dataDeclExp, DetailComponent],
-  imports: [CommonModule, SharedModule, PastTaskRouterModule],
+  imports: [CommonModule, SharedModule, CoreModule, PastTaskRouterModule],
   providers: [PastTaskService],
   exports: [dataDeclExp]
 })
