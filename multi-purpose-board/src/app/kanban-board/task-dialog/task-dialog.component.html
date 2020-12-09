@@ -8,6 +8,11 @@
     <textarea matInput [(ngModel)]='data.task.description'></textarea>
 </mat-form-field>
 
+<mat-form-field>
+    <mat-label>Solution</mat-label>
+    <textarea matInput [(ngModel)]='data.task.solution'></textarea>
+</mat-form-field>
+
 <div mat-dialog-actions>
     <button mat-button [mat-dialog-close]='{task: data.task}'>OK</button>
     <button mat-button (click)='cancel()'>Cancel</button>

@@ -75,12 +75,23 @@ p {
 }
 
 @media all and (max-width:767.98px) {
+    .logo {
+        font-size: 22px;
+        display: block;
+    }
+    .logo-wrap {
+        margin: 0;
+    }
     nav {
         font-size: 12px;
     }
     .mini-navbar-wrap {
         width: auto;
         justify-content: space-around;
+    }
+    .mini-navbar ul li {
+        padding: 2px;
+        font-size: 14px;
     }
 }
 

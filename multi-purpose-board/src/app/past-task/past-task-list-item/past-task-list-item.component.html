@@ -9,7 +9,8 @@
                     <p><time>{{task.description|shortFormatText}}</time></p>
                 </div>
                 <div class="nick-name">
-                    <p>For Details click <span><a class="here" [routerLink]='["", task.id]'>HERE!</a></span></p>
+                    <p>For Details click <span><a class="here"
+                                [routerLink]='["/past-task/detail", task.id]'>HERE!</a></span></p>
                 </div>
             </div>
         </div>

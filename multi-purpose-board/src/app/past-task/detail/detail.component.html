@@ -1,16 +1,22 @@
-<div *ngIf='task' class="theme-content">
-    <div class="theme-title">
-        <div class="theme-name-wrapper">
-            <div class="theme-name">
-                <h2>{{task.title}}</h2>
-                <p>Date: <time>{{task.created_at}}</time></p>
+<app-header></app-header>
+<div *ngIf='task' class="task">
+    <div class="task-content">
+        <div class="title">
+            <h1>{{task.title}}</h1>
+        </div>
+        <div class="side-wrapper">
+            <div class="left-side">
+                <p><span class="property">Date of creation: </span><time>{{task.created_at}}</time></p>
+                <p><span class="property">Task creator: </span>{{task.creator}}</p>
             </div>
-            <div class="subscribers">
-                <p>Subscribers: <span>{{task?.executor}}</span></p>
-                <!-- <button class="subscribe">Subscribe</button>
-                        <button class="unsubscribe">Unsubscribe</button> -->
+            <div class="right-side">
+                <p><span class="property">Date of execution: </span><time>{{task.executed_at}}</time></p>
+                <p><span class="property">Task executor: </span>{{task.executor}}</p>
             </div>
         </div>
+        <div class="solution"><span class="property">Soluton: </span>{{task.solution}}</div>
+        <div class="description"><span class="property">Description: </span>{{task.description}}</div>
     </div>
 </div>
 <app-loader [isLoading]='!task'></app-loader>
+<app-footer></app-footer>

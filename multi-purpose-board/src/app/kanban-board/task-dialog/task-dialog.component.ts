@@ -21,6 +21,7 @@ export class TaskDialogComponent implements OnInit {
   cancel(): void{
     (this.data.task.title as any) = this.backupTask.title;
     (this.data.task.description as any) = this.backupTask.description;
+    (this.data.task.solution as any) = this.backupTask.solution;
     this.dialogRef.close(this.data);
   }
 

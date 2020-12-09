@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { KanbanBoardComponent } from './kanban-board/kanban-board/kanban-board.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
     {

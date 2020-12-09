@@ -1,5 +1,6 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { first, map, tap } from 'rxjs/operators';
 import { ITask } from 'src/app/shared/interfaces';
 import { PastTaskService } from '../past-task.service';
 
@@ -10,13 +11,28 @@ import { PastTaskService } from '../past-task.service';
 })
 export class DetailComponent implements OnInit {
 
-  task: ITask;
+  taskList: ITask[] = [];
+  get task(): ITask { return this.taskList[0]; } 
 
-  constructor(pastTaskService: PastTaskService, activatedRoot: ActivatedRoute) {
+  constructor(private pastTaskService: PastTaskService, activatedRoot: ActivatedRoute) {
     const id = activatedRoot.snapshot.params.id;
-    // pastTaskService.loadTask(id).subscribe(x => this.task = x);
+    this.loadTask(id);
   }
 
   ngOnInit(): void {
+  }
+
+  loadTask(id: string): void {
+    this.pastTaskService.loadTask(id).pipe(
+      map(x => {
+        return x.map(y => {
+          return <ITask>{
+            id: y.payload.doc.id,
+            ...(y.payload.doc.data() as object)
+          };
+        });
+      }),
+      first(),
+      tap(x => this.taskList = x)).subscribe();
   }
 }
