@@ -6,12 +6,12 @@ You can login.
 You can logout.
 You create a new task.
 You can move task in another category.
-You can edit task.
-You can delete task.
+You can edit task, when double click on the task.
+You can delete task, when double click on the task and press a delete button icon.
 If you delete task in 'Done' category, this task go to 'Old Tasks' view.
 You can navigate to 'Old Tasks' view only if you logged in.
 In 'Old Tasks' view are all successfully finished tasks.
 When you click over some task, you can receive additional information about a task.
 This app have responsive design and can use with mobile phone.
 Are used Observables and changes to database are reactive.
-Are used Authguards, Pipes, Interceptors, Directivies, Interfaces.
+Are used Angular Material, Authguards, Pipes, Interceptors, Directivies, Interfaces.

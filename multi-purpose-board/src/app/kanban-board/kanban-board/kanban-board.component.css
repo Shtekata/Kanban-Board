@@ -38,6 +38,7 @@
     border: 1px solid #ccc;
     min-height: 60px;
     border-radius: 12px;
+    padding-bottom: 6px;
 }
 
 .title-todo {
@@ -73,6 +74,7 @@ app-new-task {
     padding-top: 10px;
     text-align: center;
     opacity: 0.2;
+    padding-bottom: 26px;
 }
 
 .cdk-drag-placeholder {

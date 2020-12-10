@@ -46,7 +46,7 @@
                     [cdkDropListConnectedTo]='[inProgressList, doneList]'>
                     <p class="empty-label" *ngIf='(todo|async)?.length===0'>Empty list</p>
                     <app-task class="todo-task" cdkDrag *ngFor='let task of todo|async' [task]='task'
-                        (edit)='edit("todo", $event)'>
+                        (edit)='edit("todo", $event)' [size]='size'>
                     </app-task>
                 </mat-card>
             </div>
@@ -57,7 +57,7 @@
                     [cdkDropListConnectedTo]='[todoList, doneList]'>
                     <p class="empty-label" *ngIf='(inProgress|async)?.length===0'>Empty list</p>
                     <app-task class="inProgress-task" cdkDrag *ngFor='let task of inProgress|async' [task]='task'
-                        (edit)='edit("inProgress", $event)'>
+                        (edit)='edit("inProgress", $event)' [size]='size'>
                     </app-task>
                 </mat-card>
             </div>
@@ -68,7 +68,7 @@
                     [cdkDropListConnectedTo]='[todoList, inProgressList]'>
                     <p class="empty-label" *ngIf='(done|async)?.length===0'>Empty list</p>
                     <app-task class="done-task" cdkDrag *ngFor='let task of done|async' [task]='task'
-                        (edit)='edit("done", $event)'>
+                        (edit)='edit("done", $event)' [size]='size'>
                     </app-task>
                 </mat-card>
             </div>

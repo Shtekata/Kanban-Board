@@ -1,5 +1,5 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ITask } from '../../shared/interfaces/task';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent, TaskDialogResult } from './../task-dialog/task-dialog.component';
@@ -22,10 +22,17 @@ const getObservable = (collection: AngularFirestoreCollection<ITask>) => {
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.component.css']
 })
-export class KanbanBoardComponent {
-
+export class KanbanBoardComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.windowSize = window.innerWidth;
+    this.resizeParagraphs(this.windowSize);
+  }
   get storageUser(): any { return localStorage.getItem('user'); }
   get user(): any { return this.storageUser !== null ? JSON.parse(this.storageUser) : null; }
+  
+  windowSize: any;
+  size = 10;
 
   // todo: Task[] = [
   //   { title: 'Buy milk', description: 'Go to the store and buy milk' },
@@ -42,7 +49,16 @@ export class KanbanBoardComponent {
   done: Observable<any[]> = getObservable(this.store.collection('done'));
   old: Observable<any[]> = getObservable(this.store.collection('old'));
 
-  constructor(private dialog: MatDialog, private store: AngularFirestore, private authService: AuthService){}
+  constructor(
+    private dialog: MatDialog,
+    private store: AngularFirestore,
+    private authService: AuthService,
+  ) { }
+
+  ngOnInit(): void{
+    this.windowSize = window.innerWidth;
+    this.resizeParagraphs(this.windowSize);
+}
 
   // drop(event: CdkDragDrop<Task[]>): void{
     drop(event: CdkDragDrop<any>): void{
@@ -111,5 +127,23 @@ export class KanbanBoardComponent {
 
   logoutHandler(): void {
     this.authService.logout();
+  }
+
+  resizeParagraphs(size: number) {
+    if (size < 499.98) {
+      this.size = 10;
+    } else if (size < 575.98) {
+      this.size = 15;
+    } else if (size < 767.98) {
+      this.size = 20;
+    } else if (size < 991.98) {
+      this.size = 25;
+    } else if (size < 1199.98) {
+      this.size = 30;
+    } else if (size < 1399.98) {
+      this.size = 35;
+    } else {
+      this.size = 40;
+    }
   }
 }

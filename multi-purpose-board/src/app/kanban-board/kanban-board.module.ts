@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TaskComponent } from './task/task.component';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -30,6 +31,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     MatInputModule,
     RouterModule,
+    SharedModule
   ]
 })
 export class KanbanBoardModule { }
