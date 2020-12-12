@@ -1,16 +1,18 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../core/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { IUser } from '../shared/interfaces';
 
 @Injectable()
 export class UserService implements OnDestroy {
 
-  constructor(private http: HttpClient, private authService: AuthService, private db: AngularFirestore) { }
+  user: any = this.authService.user;
 
-    edit(data: any): Observable<any>{
-    return of(this.authService.user);
+  constructor(private authService: AuthService, private db: AngularFirestore) { }
+
+    edit(uid: string, data: IUser): Promise<any>{
+   return this.db.collection('users').doc(uid).update(data);
   }
 
   ngOnDestroy(): void{}

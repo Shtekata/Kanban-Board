@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/auth.service';
+import { IUser } from 'src/app/shared/interfaces';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,8 +13,17 @@ export class ProfileComponent implements OnInit {
 
   inEditMode = false;
   isLoading = false;
-  localUser = localStorage.getItem('user');
-  userWithUsernameAndTel = this.localUser != null ? JSON.parse(this.localUser) : null;
+  localUserStr = localStorage.getItem('user');
+  localUser = this.localUserStr != null ? JSON.parse(this.localUserStr) : null;
+  userWithUsernameAndTel: IUser = {
+    displayName: '',
+    email: this.localUser.email,
+    alternateEmail: '',
+    phoneNumber: '',
+    password: '',
+    address: '',
+    photoURL: ''
+  };
 
   constructor(private authService: AuthService, private userService: UserService) {
     this.loadProfile();
@@ -28,7 +38,7 @@ export class ProfileComponent implements OnInit {
 
   submitHandler(data: any): void {
     this.isLoading = true;
-    this.userService.edit(data).subscribe(x => {
+    this.userService.edit(this.localUser.uid, data).then(x => {
       this.isLoading = false;
       this.inEditMode = false;
     }, (err) => { this.isLoading = false; console.log(err.message); });
@@ -45,6 +55,9 @@ export class ProfileComponent implements OnInit {
       tap((x: any) => {
         this.userWithUsernameAndTel.phoneNumber = x.phoneNumber; 
         this.userWithUsernameAndTel.displayName = x.displayName; 
+        this.userWithUsernameAndTel.alternateEmail = x.alternateEmail; 
+        this.userWithUsernameAndTel.address = x.address; 
+        this.userWithUsernameAndTel.photoURL = x.photoURL; 
       })).subscribe();
   }
 } 

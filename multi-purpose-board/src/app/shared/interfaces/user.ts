@@ -1,6 +1,9 @@
 export interface IUser {
-    tel: string;
+    displayName: string;
     email: string;
-    username: string;
+    alternateEmail: string;
+    phoneNumber: string;
     password: string;
+    address: string;
+    photoURL: string;
 }

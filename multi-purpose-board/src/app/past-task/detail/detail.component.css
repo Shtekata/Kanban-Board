@@ -51,6 +51,7 @@ div>p:nth-child(2) {
     background-color: lightblue;
     font-weight: bold;
     color: navy;
+    margin-top: 10px;
 }
 
 @media all and (max-width:767.98px) {

@@ -4,12 +4,16 @@
         <p>{{userWithUsernameAndTel?.displayName}}</p>
     </div>
     <div class="flex">
-        <p>Email: </p>
-        <p>{{userWithUsernameAndTel?.email}}</p>
+        <p>Alternate Email: </p>
+        <p>{{userWithUsernameAndTel?.alternateEmail}}</p>
     </div>
     <div class="flex">
         <p>Phone: </p>
         <p>+359 {{userWithUsernameAndTel?.phoneNumber}}</p>
+    </div>
+    <div class="flex">
+        <p>Address: </p>
+        <p>{{userWithUsernameAndTel?.address}}</p>
     </div>
     <button class="edit-button" (click)='toggleEditMode()'>Edit</button>
 </ng-template>
@@ -18,20 +22,27 @@
 <ng-template #editMode>
     <form #f='ngForm' (ngSubmit)='submitHandler(f.value)'>
         <div class="flex">
-            <p>Username: </p>
-            <input #username='ngModel' [class.input-error]='username.invalid' type="text" name="username" id="username"
-                [ngModel]='userWithUsernameAndTel?.username' required minlength='5'>
+            <p>Photo URL: </p>
+            <input #photoURL='ngModel' [class.input-error]='photoURL.invalid' type="text" name="photoURL" id="photoURL"
+                [ngModel]='userWithUsernameAndTel?.photoURL'>
         </div>
-        <p *ngIf='username.touched&&username.errors?.required' class="error">Username is required.</p>
-        <p *ngIf='username.touched&&username.errors?.minlength' class="error">Username must be at least 5characters
+        <div class="flex">
+            <p>Username: </p>
+            <input #displayName='ngModel' [class.input-error]='displayName.invalid' type="text" name="displayName"
+                id="displayName" [ngModel]='userWithUsernameAndTel?.displayName' required minlength='5'>
+        </div>
+        <p *ngIf='displayName.touched&&displayName.errors?.required' class="error">Username is required.</p>
+        <p *ngIf='displayName.touched&&displayName.errors?.minlength' class="error">Username must be at least
+            5characters
             long.</p>
         <div class="flex">
-            <p>Email: </p>
-            <input #email='ngModel' [class.input-error]='email.invalid' type="email" name="email" id="email"
-                [ngModel]='userWithUsernameAndTel?.email' required appEmailValidator>
+            <p>Alternate Email: </p>
+            <input #alternateEmail='ngModel' [class.input-error]='alternateEmail.invalid' type="email"
+                name="alternateEmail" id="alternateEmail" [ngModel]='userWithUsernameAndTel?.alternateEmail' required
+                appEmailValidator>
         </div>
-        <p *ngIf='email.touched&&email.errors?.required' class="error">Email is required.</p>
-        <p *ngIf='email.touched&&email.errors?.regexNotMatch' class="error">Email is not valid!</p>
+        <p *ngIf='alternateEmail.touched&&alternateEmail.errors?.required' class="error">Email is required.</p>
+        <p *ngIf='alternateEmail.touched&&alternateEmail.errors?.regexNotMatch' class="error">Email is not valid!</p>
         <div class="flex">
             <p>Phone: </p>
             <div>
@@ -40,8 +51,13 @@
                     <option value="00359">+369</option>
                     <option value="00359">+379</option>
                 </select>
-                <input type="text" name="tel" id="tel" [ngModel]='userWithUsernameAndTel?.tel'>
+                <input type="text" name="phoneNumber" id="phoneNumber" [ngModel]='userWithUsernameAndTel?.phoneNumber'>
             </div>
+        </div>
+        <div class="flex">
+            <p>Address: </p>
+            <input #address='ngModel' [class.input-error]='address.invalid' type="text" name="address" id="address"
+                [ngModel]='userWithUsernameAndTel?.address'>
         </div>
         <button class="green-button">Save</button>
         <button type="button" class="red-button" (click)='toggleEditMode()'>Cancel</button>
@@ -50,7 +66,10 @@
 
 <div class="page">
     <div class="profile">
-        <img src="assets/images/profile.png" alt="default userWithUsernameAndTel">
+        <img *ngIf='!userWithUsernameAndTel.photoURL' src="assets/images/profile.png"
+            alt="default userWithUsernameAndTel">
+        <img *ngIf='userWithUsernameAndTel.photoURL' [src]="userWithUsernameAndTel.photoURL"
+            alt="default userWithUsernameAndTel">
         <h3>User Info:</h3>
         <ng-container *ngTemplateOutlet='inEditMode?editMode:defaultMode'></ng-container>
         <app-loader [isLoading]='isLoading'></app-loader>
