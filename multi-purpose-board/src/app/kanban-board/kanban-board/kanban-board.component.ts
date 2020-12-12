@@ -28,8 +28,9 @@ export class KanbanBoardComponent implements OnInit {
     this.windowSize = window.innerWidth;
     this.resizeParagraphs(this.windowSize);
   }
-  get storageUser(): any { return localStorage.getItem('user'); }
-  get user(): any { return this.storageUser !== null ? JSON.parse(this.storageUser) : null; }
+  // get storageUser(): any { return localStorage.getItem('user'); }
+  // get user(): any { return this.storageUser !== null ? JSON.parse(this.storageUser) : null; }
+  get user(): any { return this.authService.user; }
   
   windowSize: any;
   size = 10;

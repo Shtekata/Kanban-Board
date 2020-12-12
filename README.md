@@ -1,7 +1,7 @@
 # Kanban-Board
 Multi purpose Kanban Board
 https://kanban-task-project.web.app/
-You can register.
+You can register, but you have some validation properties.
 You can login.
 You can logout.
 You create a new task.

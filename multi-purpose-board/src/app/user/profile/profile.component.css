@@ -1,16 +1,26 @@
+.page {
+    width: 100vw;
+    height: 78vh;
+    display: flex;
+    align-items: center;
+    background-image: url('../../../assets/images/profile-background.jpg');
+    background-size: cover;
+}
+
 .profile {
     width: 100%;
     max-width: 500px;
     margin: 2em auto 1rem;
     padding: .5em;
-    border: .3em solid rgb(0, 212, 255);
-    border-radius: .5rem;
+    border: .3em solid rgb(255, 0, 36);
+    border-radius: 50%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
     background-color: hsla(0, 0%, 94.1%, .8);
     box-shadow: 0 0 1em 0 #000;
     text-align: center;
-    height: 25em;
+    max-height: 500px;
+    height: 100%;
 }
 
 .profile h3 {

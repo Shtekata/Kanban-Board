@@ -1,22 +1,16 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, delay, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../core/auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
 export class UserService implements OnDestroy {
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private db: AngularFirestore) { }
 
-  getCurrentUserProfile(): Observable<any>{
-    return this.http.get(`/users/profile`).pipe(
-      tap((x: any) => this.authService.currentUser = x));
-  }
-
-  edit(data: any): Observable<any>{
-    return this.http.put(`/users/profile`, data)
-      .pipe(tap((x: any) => this.authService.currentUser = x));
+    edit(data: any): Observable<any>{
+    return of(this.authService.user);
   }
 
   ngOnDestroy(): void{}

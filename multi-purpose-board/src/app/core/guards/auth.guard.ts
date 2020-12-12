@@ -12,12 +12,8 @@ export class AuthGuard implements CanActivate, CanActivateChild{
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         let stream$: Observable<IUser | null>;
-
-        if (this.authService.currentUser === undefined) {
-            stream$ = this.authService.authenticate();
-        } else {
-            stream$ = of(this.authService.currentUser);
-        }
+       
+        stream$ = of(this.authService.user);
 
         return stream$.pipe(
             map((x: IUser | null) => {
@@ -35,12 +31,8 @@ export class AuthGuard implements CanActivate, CanActivateChild{
 
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         let stream$: Observable<IUser | null>;
-
-        if (this.authService.currentUser === undefined) {
-            stream$ = this.authService.authenticate();
-        } else {
-            stream$ = of(this.authService.currentUser);
-        }
+    
+        stream$ = of(this.authService.user);
 
         return stream$.pipe(
             map((x: IUser | null) => {

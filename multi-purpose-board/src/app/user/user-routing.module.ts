@@ -28,7 +28,7 @@ const routes: Routes = [
             noNavigation: true,
             title: 'REGISTER USER'
         }
-    }
+    },
 ];
 
 export const UserRoutingMogule = RouterModule.forChild(routes);

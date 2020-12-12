@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 .mainbox {
+    background-image: url('../../assets/images/not-found.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: auto;
-    height: 550px;
-    width: 550px;
-    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
 .err {
-    color: #95c2de;
+    color: yellow;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 11rem;
     position: absolute;
@@ -19,11 +22,11 @@
     font-size: 8.5rem;
     left: 42%;
     top: 15%;
-    color: #95c2de;
+    color: yellow;
 }
 
 .err2 {
-    color: #95c2de;
+    color: yellow;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 11rem;
     position: absolute;
@@ -33,17 +36,19 @@
 
 .msg {
     text-align: center;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Special Elite', cursive;
     font-size: 1.6rem;
     position: absolute;
     left: 16%;
     top: 45%;
     width: 75%;
+    color: fuchsia;
+    font-size: 3em;
 }
 
 a {
     text-decoration: none;
-    color: #95c2de;
+    color: yellow;
 }
 
 a:hover {

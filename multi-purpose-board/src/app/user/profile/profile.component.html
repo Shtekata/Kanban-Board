@@ -1,15 +1,15 @@
 <ng-template #defaultMode>
     <div class="flex">
         <p>Username: </p>
-        <p>{{currentUser?.username}}</p>
+        <p>{{userWithUsernameAndTel?.displayName}}</p>
     </div>
     <div class="flex">
         <p>Email: </p>
-        <p>{{currentUser?.email}}</p>
+        <p>{{userWithUsernameAndTel?.email}}</p>
     </div>
     <div class="flex">
         <p>Phone: </p>
-        <p>+359 {{currentUser?.tel}}</p>
+        <p>+359 {{userWithUsernameAndTel?.phoneNumber}}</p>
     </div>
     <button class="edit-button" (click)='toggleEditMode()'>Edit</button>
 </ng-template>
@@ -20,7 +20,7 @@
         <div class="flex">
             <p>Username: </p>
             <input #username='ngModel' [class.input-error]='username.invalid' type="text" name="username" id="username"
-                [ngModel]='currentUser?.username' required minlength='5'>
+                [ngModel]='userWithUsernameAndTel?.username' required minlength='5'>
         </div>
         <p *ngIf='username.touched&&username.errors?.required' class="error">Username is required.</p>
         <p *ngIf='username.touched&&username.errors?.minlength' class="error">Username must be at least 5characters
@@ -28,7 +28,7 @@
         <div class="flex">
             <p>Email: </p>
             <input #email='ngModel' [class.input-error]='email.invalid' type="email" name="email" id="email"
-                [ngModel]='currentUser?.email' required appEmailValidator>
+                [ngModel]='userWithUsernameAndTel?.email' required appEmailValidator>
         </div>
         <p *ngIf='email.touched&&email.errors?.required' class="error">Email is required.</p>
         <p *ngIf='email.touched&&email.errors?.regexNotMatch' class="error">Email is not valid!</p>
@@ -40,7 +40,7 @@
                     <option value="00359">+369</option>
                     <option value="00359">+379</option>
                 </select>
-                <input type="text" name="tel" id="tel" [ngModel]='currentUser?.tel'>
+                <input type="text" name="tel" id="tel" [ngModel]='userWithUsernameAndTel?.tel'>
             </div>
         </div>
         <button class="green-button">Save</button>
@@ -48,10 +48,12 @@
     </form>
 </ng-template>
 
-<div class="profile">
-    <img src="assets/images/profile.png" alt="default user">
-    <h3>User Info:</h3>
-    <ng-container *ngTemplateOutlet='inEditMode?editMode:defaultMode'></ng-container>
-    <app-loader [isLoading]='isLoading'></app-loader>
+<div class="page">
+    <div class="profile">
+        <img src="assets/images/profile.png" alt="default userWithUsernameAndTel">
+        <h3>User Info:</h3>
+        <ng-container *ngTemplateOutlet='inEditMode?editMode:defaultMode'></ng-container>
+        <app-loader [isLoading]='isLoading'></app-loader>
+    </div>
 </div>
 <app-footer></app-footer>

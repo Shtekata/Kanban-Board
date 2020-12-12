@@ -11,8 +11,7 @@ import { emailValidator, rePasswordValidatorFactory } from 'src/app/shared/valid
 })
 export class RegisterComponent implements OnInit {
 
-  form!: FormGroup;
-  morm: FormGroup;
+  form: FormGroup;
 
   isLoading = false;
   errorMessage = '';
@@ -22,9 +21,9 @@ export class RegisterComponent implements OnInit {
     const passwordControl = this.fb.control('111111', [Validators.required, Validators.minLength(5)], []);
 
     this.form = this.fb.group({
-      username: ['shtekata', [Validators.required, Validators.minLength(6)], []],
+      displayName: ['shtekata', [Validators.required, Validators.minLength(6)], []],
       email: ['gesheval@gmail.com', [Validators.required, emailValidator], []],
-      tel: ['887658529', [], []],
+      phoneNumber: ['887658529', [], []],
       password: passwordControl,
       rePassword: ['111111', [Validators.required, Validators.minLength(6), rePasswordValidatorFactory(passwordControl)], []]
     });

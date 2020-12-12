@@ -26,7 +26,7 @@ export class TaskComponent implements OnInit, OnChanges {
       this.sizeTitle = this.size - 10;
     }
     this.task.resizedTitle = this.resize(this.sizeTitle, this.task.title);
-    this.task.resizeDesc = this.resize(this.size, this.task.description);
+    this.task.resizedDesc = this.resize(this.size, this.task.description);
   }
 
   ngOnChanges(): void {
@@ -38,7 +38,7 @@ export class TaskComponent implements OnInit, OnChanges {
       this.sizeTitle = this.size - 10;
     }
     this.task.resizedTitle = this.resize(this.sizeTitle, this.task.title);
-    this.task.resizeDesc = this.resize(this.size, this.task.description);
+    this.task.resizedDesc = this.resize(this.size, this.task.description);
   }
 
   editTask(task: ITask, e: Event): any {

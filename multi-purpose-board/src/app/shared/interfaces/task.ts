@@ -5,7 +5,7 @@ export interface ITask<T= IUser, TT= IUser> {
     title: string;
     resizedTitle?: string[];
     description: string;
-    resizeDesc?: string[];
+    resizedDesc?: string[];
     solution?: string;
     creator?: T;
     executor?: TT;

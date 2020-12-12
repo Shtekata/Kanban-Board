@@ -4,13 +4,15 @@
         <fieldset>
             <h2>Registration Form</h2>
             <p class="field field-icon">
-                <label for="username"><span><i class="fas fa-user"></i></span></label>
-                <input [class.input-error]='!form.get("username")?.untouched&&form.get("username")?.invalid' type="text"
-                    name="username" id="username" placeholder="Johny" formControlName='username'>
+                <label for="displayName"><span><i class="fas fa-user"></i></span></label>
+                <input [class.input-error]='!form.get("displayName")?.untouched&&form.get("displayName")?.invalid'
+                    type="text" name="displayName" id="displayName" placeholder="Johny" formControlName='displayName'>
             </p>
-            <p *ngIf='form.get("username")?.touched&&form.get("username")?.errors?.required' class="error">Username is
+            <p *ngIf='form.get("displayName")?.touched&&form.get("displayName")?.errors?.required' class="error">
+                Username is
                 required!</p>
-            <p *ngIf='form.get("username")?.touched&&form.get("username")?.errors?.minlength' class="error">Username
+            <p *ngIf='form.get("displayName")?.touched&&form.get("displayName")?.errors?.minlength' class="error">
+                Username
                 must
                 be at least 5 characters!</p>
             <p class="field field-icon">
@@ -22,11 +24,12 @@
             </p>
             <p *ngIf='form.get("email")?.errors?.regexNotMatch' class="error">Email is not valid!</p>
             <p class="field field-icon">
-                <label for="tel"><span><i class="fas fa-phone"></i></span></label>
+                <label for="phoneNumber"><span><i class="fas fa-phone"></i></span></label>
                 <select name="select-tel" id="select-tel" class="tel">
                     <option value="00359">+359</option>
                 </select>
-                <input type="text" name="tel" id="tel" placeholder="885 888 888" formControlName='tel'>
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="885 888 888"
+                    formControlName='phoneNumber'>
             </p>
             <p class="field field-icon">
                 <label for="password"><span><i class="fas fa-lock"></i></span></label>
