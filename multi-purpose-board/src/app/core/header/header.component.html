@@ -3,26 +3,32 @@
         <div class="logo-wrap">
             <p class="logo"><span class="logo">Kanban Board</span></p>
         </div>
-        <div class="mini-navbar" *ngIf='!isLogged'>
-            <ul>
-                <li>
-                    <!-- <a (click)='loginHandler()'>Login</a> -->
-                    <a routerLink='/user/login'>Login</a>
-                </li>
-                <li>
-                    <a routerLink='/user/register'>Sign up</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mini-navbar" *ngIf='isLogged'>
-            <ul>
-                <li>
-                    <a routerLink='/user/profile'>{{user?.email}}</a>
-                </li>
-                <li>
-                    <a (click)='logoutHandler()'>Logout</a>
-                </li>
-            </ul>
+        <div class="navbar-picture">
+            <div class="mini-navbar" *ngIf='!isLogged'>
+                <ul>
+                    <li>
+                        <!-- <a (click)='loginHandler()'>Login</a> -->
+                        <a routerLink='/user/login'>Login</a>
+                    </li>
+                    <li>
+                        <a routerLink='/user/register'>Sign up</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mini-navbar" *ngIf='isLogged'>
+                <ul>
+                    <li>
+                        <a routerLink='/user/profile'>{{user?.email}}</a>
+                    </li>
+                    <li>
+                        <a (click)='logoutHandler()'>Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="image">
+                <img *ngIf='photoURL&&user' [src]="photoURL" alt="no picture">
+                <img *ngIf='!user||!photoURL' src="../../../assets/images/profile.png" alt="no picture">
+            </div>
         </div>
     </div>
     <nav>

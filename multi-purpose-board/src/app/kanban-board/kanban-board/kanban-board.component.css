@@ -118,6 +118,22 @@ app-new-task {
     color: indigo;
 }
 
+.image {
+    width: 37px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.navbar-picture {
+    display: flex;
+}
+
 @media all and (max-width:3399.98px) {
     .content-wrapper .container-wrapper .container {
         width: 400px;

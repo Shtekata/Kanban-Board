@@ -74,6 +74,29 @@ p {
     padding-left: .5em;
 }
 
+.image {
+    width: 37px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.navbar-picture {
+    display: flex;
+}
+
+@media all and (max-width:991.98px) {
+    .mini-navbar-wrap {
+        width: auto;
+        justify-content: space-around;
+    }
+}
+
 @media all and (max-width:767.98px) {
     .logo {
         font-size: 22px;
@@ -84,10 +107,6 @@ p {
     }
     nav {
         font-size: 12px;
-    }
-    .mini-navbar-wrap {
-        width: auto;
-        justify-content: space-around;
     }
     .mini-navbar ul li {
         padding: 2px;

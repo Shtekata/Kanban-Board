@@ -1,24 +1,43 @@
 @import url('./welcome.css');
 @import url('./responsive.css');
+@import url('https://fonts.googleapis.com/css2?family=Felipa&family=Josefin+Slab:wght@600&display=swap');
+.container {
+    height: 78vh;
+    background-image: url('../../../assets/images/home.jpg');
+    background-size: cover;
+}
+
 .welcome {
-    padding: 0.3em 0.5em;
     border: 1px solid #999;
     border-radius: 0.3em;
     font-size: 0.8em;
     margin-top: 1em;
+    height: 75vh;
 }
 
 .welcome h3 {
-    background-color: #4ebced;
+    background-color: bisque;
     border-radius: 0.3em;
     width: 100%;
     padding: 0.3em 1em;
+    color: darkred;
 }
 
 .welcome p {
-    padding: 1em;
+    padding: 0.3em;
+    color: burlywood;
+    font-family: 'Felipa', cursive;
+    font-size: 20px;
+}
+
+.welcome p.title {
+    font-size: 23px;
+    font-family: 'Josefin Slab', serif;
+    text-align: center;
+}
+
+.welcome p.underline {
     border-bottom: 1px solid #999;
-    font-style: normal;
 }
 
 .welcome a {
@@ -39,9 +58,19 @@
     display: flex;
     justify-content: space-evenly;
     padding: 0;
-    margin: 1em;
+}
+
+.welcome ul li p {
+    color: snow;
+    padding: 0;
 }
 
 .welcome li {
     list-style: none;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
 }

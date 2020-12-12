@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { map, tap } from 'rxjs/operators';
 import { IUser } from 'src/app/shared/interfaces';
 import { AuthService } from '../auth.service';
 
@@ -24,12 +25,30 @@ export class HeaderComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, title: Title) { }
 
+  photoURL: string | null;
+
   ngOnInit(): void {
+      this.loadProfile();
+
   }
 
   logoutHandler(): void {
+    this.photoURL = null;
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  loadProfile(): void {
+    this.authService.loadProfile().pipe(
+      map((x: any) => {
+          return <any>{
+            id: x.payload.id,
+            ...(x.payload.data() as object)
+          };
+      }),
+      tap((x: any) => {
+        this.photoURL = x.photoURL; 
+      })).subscribe();
   }
 
 }

@@ -4,6 +4,10 @@ https://kanban-task-project.web.app/
 You can register, but you have some validation properties.
 You can login.
 You can logout.
+When you click on the email in the navigation bar, you go to the profile page.
+There you can add additional information about you.
+Once you read this information, then you understand how to navigate to the info page. :)
+Оf course there is also a page for wrong paths.
 You create a new task.
 You can move task in another category.
 You can edit task, when double click on the task.

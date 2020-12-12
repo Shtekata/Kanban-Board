@@ -6,6 +6,7 @@ import { TaskDialogComponent, TaskDialogResult } from './../task-dialog/task-dia
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
+import { map, tap } from 'rxjs/operators';
 
 const getObservable = (collection: AngularFirestoreCollection<ITask>) => {
   const subject = new BehaviorSubject([]);
@@ -34,6 +35,7 @@ export class KanbanBoardComponent implements OnInit {
   
   windowSize: any;
   size = 10;
+  photoURL: string | null;
 
   // todo: Task[] = [
   //   { title: 'Buy milk', description: 'Go to the store and buy milk' },
@@ -59,6 +61,7 @@ export class KanbanBoardComponent implements OnInit {
   ngOnInit(): void{
     this.windowSize = window.innerWidth;
     this.resizeParagraphs(this.windowSize);
+    this.loadProfile();
 }
 
   // drop(event: CdkDragDrop<Task[]>): void{
@@ -128,6 +131,7 @@ export class KanbanBoardComponent implements OnInit {
 
   logoutHandler(): void {
     this.authService.logout();
+    this.photoURL = null;
   }
 
   resizeParagraphs(size: number) {
@@ -146,5 +150,18 @@ export class KanbanBoardComponent implements OnInit {
     } else {
       this.size = 40;
     }
+  }
+
+  loadProfile(): void {
+    this.authService.loadProfile().pipe(
+      map((x: any) => {
+          return <any>{
+            id: x.payload.id,
+            ...(x.payload.data() as object)
+          };
+      }),
+      tap((x: any) => {
+        this.photoURL = x.photoURL; 
+      })).subscribe();
   }
 }

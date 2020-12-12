@@ -1,19 +1,23 @@
 <ng-template #defaultMode>
     <div class="flex">
         <p>Username: </p>
-        <p>{{userWithUsernameAndTel?.displayName}}</p>
+        <p class="fill" *ngIf='!userWithUsernameAndTel?.displayName'>please fill in your details...</p>
+        <p *ngIf='userWithUsernameAndTel?.displayName'>{{userWithUsernameAndTel?.displayName}}</p>
     </div>
     <div class="flex">
         <p>Alternate Email: </p>
-        <p>{{userWithUsernameAndTel?.alternateEmail}}</p>
+        <p class="fill" *ngIf='!userWithUsernameAndTel?.alternateEmail'>please fill in your details...</p>
+        <p *ngIf='userWithUsernameAndTel?.alternateEmail'>{{userWithUsernameAndTel?.alternateEmail}}</p>
     </div>
     <div class="flex">
         <p>Phone: </p>
-        <p>+359 {{userWithUsernameAndTel?.phoneNumber}}</p>
+        <p class="fill" *ngIf='!userWithUsernameAndTel?.phoneNumber'>+359 please fill in your details...</p>
+        <p *ngIf='userWithUsernameAndTel?.phoneNumber'>+359 {{userWithUsernameAndTel?.phoneNumber}}</p>
     </div>
     <div class="flex">
         <p>Address: </p>
-        <p>{{userWithUsernameAndTel?.address}}</p>
+        <p class="fill" *ngIf='!userWithUsernameAndTel?.address'>please fill in your details...</p>
+        <p *ngIf='userWithUsernameAndTel?.address'>{{userWithUsernameAndTel?.address}}</p>
     </div>
     <button class="edit-button" (click)='toggleEditMode()'>Edit</button>
 </ng-template>
