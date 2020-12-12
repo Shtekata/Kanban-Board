@@ -1,33 +1,37 @@
 <app-header></app-header>
 <div class="container">
-    <div class="welcome res">
-        <h3>Welcome!</h3>
-        <p class="title">This is a free to use kanban board.</p>
-        <p class="title underline">Us are me, Asen Geshev. For contacts: gesheval@gmail.com</p>>
-        <div class="info">
-            <p>Details:</p>
-            <ul>
-                <li>
-                    <p>You can register, but you have some validation properties.</p>
-                    <p>You can login.</p>
-                    <p>You can logout.</p>
-                    <p>When you click on the email in the navigation bar, you go to the profile page.</p>
-                    <p>There you can add additional information about you.</p>
-                    <p>Once you read this information, then you understand how to navigate to the info page. :)</p>
-                    <p>Оf course there is also a page for wrong paths.</p>
-                    <p>You create a new task.</p>
-                    <p>You can move task in another category.</p>
-                    <p>You can edit task, when double click on the task.</p>
-                    <p>You can delete task, when double click on the task and press a delete button icon.</p>
-                    <p>If you delete task in 'Done' category, this task go to 'Old Tasks' view.</p>
-                    <p>You can navigate to 'Old Tasks' view only if you logged in.</p>
-                    <p>In 'Old Tasks' view are all successfully finished tasks.</p>
-                    <p>When you click over some task, you can receive additional information about a task.</p>
-                    <p>This app have responsive design and can use with mobile phone.</p>
-                    <p>Are used Observables and changes to database are reactive.</p>
-                    <p>Are used Angular Material, Authguards, Pipes, Interceptors, Directivies, Interfaces.</p>
-                </li>
-            </ul>
+    <div class="home res">
+        <div class="header">
+            <h3>Welcome!</h3>
+            <p class="title first">This is a free to use kanban board.</p>
+            <p class="title second">Us are me, Asen Geshev. For contacts: gesheval@gmail.com</p>
+        </div>
+        <div class="info-wrapper">
+            <div class="info">
+                <p>Details:</p>
+                <ul>
+                    <li>
+                        <p>You can register, but you have some validation properties.</p>
+                        <p>You can login.</p>
+                        <p>You can logout.</p>
+                        <p>When you click on the email in the navigation bar, you go to the profile page.</p>
+                        <p>There you can add additional information about you.</p>
+                        <p>Once you read this information, then you understand how to navigate to the info page. :)</p>
+                        <p>Оf course there is also a page for wrong paths.</p>
+                        <p>You create a new task.</p>
+                        <p>You can move task in another category.</p>
+                        <p>You can edit task, when double click on the task.</p>
+                        <p>You can delete task, when double click on the task and press a delete button icon.</p>
+                        <p>If you delete task in 'Done' category, this task go to 'Old Tasks' view.</p>
+                        <p>You can navigate to 'Old Tasks' view only if you logged in.</p>
+                        <p>In 'Old Tasks' view are all successfully finished tasks.</p>
+                        <p>When you click over some task, you can receive additional information about a task.</p>
+                        <p>This app have responsive design and can use with mobile phone.</p>
+                        <p>Are used Observables and changes to database are reactive.</p>
+                        <p>Are used Angular Material, Authguards, Pipes, Interceptors, Directivies, Interfaces.</p>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div *ngIf='!isLogged' class="logged">
             <ul>

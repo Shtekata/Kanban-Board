@@ -52,7 +52,9 @@
                 class="error">
                 Repeat Password does not match password!</p>
             <p *ngIf='errorMessage' class="error">{{errorMessage}}</p>
-            <button [disabled]='isLoading||form.invalid'>Create Account</button>
+            <div>
+                <button [disabled]='isLoading||form.invalid'>Create Account</button>
+            </div>
             <app-loader [isLoading]='isLoading'>Loading...</app-loader>
             <p class="text-center">Have an account?<a routerLink='/user/login'>Log In</a></p>
         </fieldset>

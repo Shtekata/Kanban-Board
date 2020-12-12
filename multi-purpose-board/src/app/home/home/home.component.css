@@ -1,46 +1,53 @@
-@import url('./welcome.css');
 @import url('./responsive.css');
 @import url('https://fonts.googleapis.com/css2?family=Felipa&family=Josefin+Slab:wght@600&display=swap');
 .container {
-    height: 78vh;
+    min-height: 79.7vh;
     background-image: url('../../../assets/images/home.jpg');
     background-size: cover;
+    padding: 8px 0;
 }
 
-.welcome {
+.home {
     border: 1px solid #999;
     border-radius: 0.3em;
     font-size: 0.8em;
-    margin-top: 1em;
-    height: 75vh;
+    min-height: 74.5vh;
+    width: 90%;
+    margin: auto;
 }
 
-.welcome h3 {
+.home h3 {
     background-color: bisque;
     border-radius: 0.3em;
     width: 100%;
     padding: 0.3em 1em;
     color: darkred;
+    font-size: 16px;
 }
 
-.welcome p {
+.home p {
     padding: 0.3em;
     color: burlywood;
     font-family: 'Felipa', cursive;
-    font-size: 20px;
+    font-size: 19px;
 }
 
-.welcome p.title {
+.home p.title {
     font-size: 23px;
     font-family: 'Josefin Slab', serif;
     text-align: center;
 }
 
-.welcome p.underline {
+.home p.first {
+    padding-bottom: 0;
+}
+
+.home p.second {
+    padding-top: 0;
     border-bottom: 1px solid #999;
 }
 
-.welcome a {
+.home a {
     color: white;
     text-decoration: none;
     background-color: #4ebced;
@@ -48,24 +55,25 @@
     border-radius: 0.3em;
     padding: 0.5em 5.2em;
     margin: 1em;
+    font-size: 12px;
 }
 
-.welcome a:hover {
+.home a:hover {
     cursor: pointer;
 }
 
-.welcome ul {
+.home ul {
     display: flex;
     justify-content: space-evenly;
     padding: 0;
 }
 
-.welcome ul li p {
+.home ul li p {
     color: snow;
     padding: 0;
 }
 
-.welcome li {
+.home li {
     list-style: none;
 }
 
@@ -73,4 +81,12 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
+    width: 100%;
+}
+
+.info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 85%;
 }

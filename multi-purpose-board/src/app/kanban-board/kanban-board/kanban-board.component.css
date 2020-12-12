@@ -85,6 +85,10 @@ app-new-task {
     transition: transform 250ms;
 }
 
+.mini-navbar {
+    margin-left: 5px;
+}
+
 .mini-navbar ul {
     display: flex;
     background-color: cornsilk;
@@ -108,6 +112,10 @@ app-new-task {
 
 .mini-navbar .old-task-ul:hover {
     background-color: lightseagreen;
+}
+
+.icon-old {
+    display: flex;
 }
 
 .old-task-a {
@@ -162,11 +170,26 @@ img {
     .content-wrapper .container-wrapper .container {
         width: 185px;
     }
+    .toolbar .mini-navbar ul {
+        font-size: 12px;
+    }
+    .toolbar .mini-navbar ul li {
+        padding: 0 5px;
+    }
+    .toolbar .span {
+        font-size: 16px;
+    }
 }
 
 @media all and (max-width:575.98px) {
     .content-wrapper .container-wrapper .container {
         width: 150px;
+    }
+    .mat-toolbar {
+        padding: 0;
+        flex-direction: column;
+        height: 90px;
+        justify-content: space-evenly;
     }
 }
 
@@ -183,11 +206,5 @@ img {
     .mini-navbar ul li {
         padding: 0px 5px;
         font-size: 14px;
-    }
-    .mat-toolbar {
-        padding: 0;
-        flex-direction: column;
-        height: 77px;
-        justify-content: flex-start;
     }
 }

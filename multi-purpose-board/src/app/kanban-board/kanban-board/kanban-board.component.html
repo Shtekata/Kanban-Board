@@ -1,15 +1,17 @@
 <div class="mat-typography">
     <mat-toolbar class="toolbar">
-        <div>
-            <mat-icon>local_fire_department</mat-icon>
-            <span>Shtekata Kanban Board</span>
-        </div>
-        <div class="mini-navbar" *ngIf='user'>
-            <ul class="old-task-ul">
-                <li>
-                    <a class="old-task-a" routerLink='/past-task'>Old Tasks</a>
-                </li>
-            </ul>
+        <div class="icon-old">
+            <div>
+                <mat-icon>local_fire_department</mat-icon>
+                <span class="span">Shtekata Kanban Board</span>
+            </div>
+            <div class="mini-navbar" *ngIf='user'>
+                <ul class="old-task-ul">
+                    <li>
+                        <a class="old-task-a" routerLink='/past-task'>Old Tasks</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="navbar-picture">
             <div class="mini-navbar" *ngIf='!user'>

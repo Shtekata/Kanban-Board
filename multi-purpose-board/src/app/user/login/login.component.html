@@ -24,7 +24,9 @@
             <p *ngIf='userPassword.touched&&userPassword.errors?.required' class="error">Password is required!</p>
             <p *ngIf='userPassword.errors?.minlength' class="error">Password must be at least 6 characters!</p>
             <p *ngIf='errorMessage' class="error">{{errorMessage}}</p>
-            <button [disabled]='isLoading||f.invalid'>Login</button>
+            <div>
+                <button [disabled]='isLoading||f.invalid'>Login</button>
+            </div>
             <app-loader [isLoading]='isLoading'></app-loader>
             <p class="text-center">Have an account?<a routerLink='/user/register'>Register</a></p>
         </fieldset>

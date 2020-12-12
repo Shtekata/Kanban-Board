@@ -6,7 +6,7 @@ footer {
     bottom: 0;
     width: 100%;
     max-width: 1366px;
-    height: 75px;
+    height: 65px;
     color: maroon;
     font-size: 17px;
     min-width: 100vw;
@@ -20,11 +20,35 @@ footer p {
 }
 
 footer span {
-    font-size: 1.5em;
+    font-size: 1.1em;
+}
+
+@media all and (max-width:575.98px) {
+    footer {
+        height: 55px;
+    }
+    footer p {
+        font-size: 0.6em;
+    }
+    a {
+        font-size: 10px;
+    }
+    footer span {
+        font-size: 1.2em;
+    }
 }
 
 @media all and (max-width:499.98px) {
+    footer {
+        height: 55px;
+    }
+    footer p {
+        font-size: 0.6em;
+    }
     a {
-        font-size: 12px;
+        font-size: 10px;
+    }
+    footer span {
+        font-size: 0;
     }
 }
