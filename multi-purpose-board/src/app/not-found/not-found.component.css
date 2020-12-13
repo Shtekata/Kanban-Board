@@ -55,3 +55,63 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+@media all and (max-width:991.98px) {
+    .msg {
+        font-size: 2.5em;
+    }
+    .err, .err2 {
+        font-size: 10em;
+    }
+    .far {
+        font-size: 7.5em;
+    }
+}
+
+@media all and (max-width:767.98px) {
+    .msg {
+        font-size: 2em;
+    }
+    .err, .err2 {
+        font-size: 9em;
+    }
+    .far {
+        font-size: 6.5em;
+    }
+}
+
+@media all and (max-width:575.98px) {
+    .msg {
+        font-size: 1.5em;
+    }
+    .err, .err2 {
+        font-size: 8em;
+    }
+    .far {
+        font-size: 5.5em;
+    }
+}
+
+@media all and (max-width:499.98px) {
+    .msg {
+        font-size: 1.3em;
+    }
+    .err, .err2 {
+        font-size: 7em;
+    }
+    .far {
+        font-size: 4.5em;
+    }
+}
+
+@media all and (max-width:399.98px) {
+    .msg {
+        font-size: 1.1em;
+    }
+    .err, .err2 {
+        font-size: 6.5em;
+    }
+    .far {
+        font-size: 4em;
+    }
+}
