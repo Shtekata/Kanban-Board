@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Felipa&family=Josefin+Slab:wght@600&display=swap');
 .todo-task .item, .todo-task .textarea {
     color: maroon;
 }
@@ -142,6 +143,29 @@ img {
     display: flex;
 }
 
+.footer {
+    background-color: khaki;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer p {
+    text-align: end;
+    margin: 0 auto;
+    padding: 20px 0;
+    font-size: 22px;
+    flex-grow: 1;
+    padding-right: 20px;
+}
+
+.footer a {
+    font-family: 'Felipa', cursive;
+    font-size: 30px;
+    text-decoration: underline;
+    flex-grow: 1;
+}
+
 @media all and (max-width:3399.98px) {
     .content-wrapper .container-wrapper .container {
         width: 400px;
@@ -179,6 +203,12 @@ img {
     .toolbar .span {
         font-size: 16px;
     }
+    .footer p {
+        font-size: 16px;
+    }
+    .footer a {
+        font-size: 20px;
+    }
 }
 
 @media all and (max-width:575.98px) {
@@ -190,6 +220,12 @@ img {
         flex-direction: column;
         height: 90px;
         justify-content: space-evenly;
+    }
+    .footer p {
+        font-size: 14px;
+    }
+    .footer a {
+        font-size: 20px;
     }
 }
 
@@ -206,5 +242,15 @@ img {
     .mini-navbar ul li {
         padding: 0px 5px;
         font-size: 14px;
+    }
+    .footer {
+        flex-direction: column;
+    }
+    .footer p {
+        padding: 15px 0 0 0;
+    }
+    .footer a {
+        font-size: 18px;
+        padding: 5px 0 15px 0;
     }
 }

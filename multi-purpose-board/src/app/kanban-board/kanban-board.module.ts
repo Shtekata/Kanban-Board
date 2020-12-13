@@ -31,7 +31,7 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     MatInputModule,
     RouterModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class KanbanBoardModule { }
