@@ -8,9 +8,9 @@ When you click on the email in the navigation bar, you go to the profile page.
 There you can add additional information about you.
 Once you read this information, then you understand how to navigate to the info page. :)
 Оf course there is also a page for wrong paths.
-You create a new task.
-You can move task in another category.
-You can edit task, when double click on the task.
+You create a new task, if you are logged in.
+You can move task in another category, if you are logged in.
+You can edit or delete task, when double click on the task, if you are logged in.
 You can delete task, when double click on the task and press a delete button icon.
 If you delete task in 'Done' category, this task go to 'Old Tasks' view.
 You can navigate to 'Old Tasks' view only if you logged in.

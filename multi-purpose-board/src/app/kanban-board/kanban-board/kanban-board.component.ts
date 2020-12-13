@@ -66,7 +66,7 @@ export class KanbanBoardComponent implements OnInit {
 
   // drop(event: CdkDragDrop<Task[]>): void{
     drop(event: CdkDragDrop<any>): void{
-    if (event.previousContainer === event.container) { return; }
+    if (event.previousContainer === event.container||!this.user) { return; }
     const item = event.previousContainer.data[event.previousIndex];
     this.store.firestore.runTransaction(() => {
       return Promise.all([
@@ -82,7 +82,8 @@ export class KanbanBoardComponent implements OnInit {
     );
   }
 
-  edit(list: 'done'|'todo'|'inProgress', task: ITask): void{
+  edit(list: 'done' | 'todo' | 'inProgress', task: ITask): void{
+    if (!this.user) { return;}
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '270px',
       data: {
@@ -113,6 +114,7 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   newTask(): void {
+    if (!this.user) { return;}
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '270px',
       data: {
