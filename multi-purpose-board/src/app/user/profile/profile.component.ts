@@ -38,10 +38,28 @@ export class ProfileComponent implements OnInit {
 
   submitHandler(data: any): void {
     this.isLoading = true;
-    this.userService.edit(this.localUser.uid, data).then(x => {
+    if (
+      this.userWithUsernameAndTel.phoneNumber ||
+      this.userWithUsernameAndTel.displayName ||
+      this.userWithUsernameAndTel.alternateEmail ||
+      this.userWithUsernameAndTel.address ||
+      this.userWithUsernameAndTel.photoURL) {
+      this.userService.edit(this.localUser.uid, data).then(x => {
       this.isLoading = false;
       this.inEditMode = false;
     }, (err) => { this.isLoading = false; console.log(err.message); });
+    } else {
+      const newData: any = {};
+      data.phoneNumber ? newData.phoneNumber = data.phoneNumber : null;
+      data.displayName ? newData.displayName = data.displayName : null;
+      data.alternateEmail ? newData.alternateEmail = data.alternateEmail : null;
+      data.address ? newData.address = data.address : null;
+      data.photoURL ? newData.photoURL = data.photoURL : null;
+      this.userService.add(this.localUser.uid, newData).then(x => {
+      this.isLoading = false;
+      this.inEditMode = false;
+    }, (err) => { this.isLoading = false; console.log(err.message); });  
+       }
   }
 
  loadProfile(): void {

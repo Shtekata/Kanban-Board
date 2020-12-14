@@ -11,6 +11,10 @@ export class UserService implements OnDestroy {
 
   constructor(private authService: AuthService, private db: AngularFirestore) { }
 
+    add(uid: string, data: IUser): Promise<any>{
+   return this.db.collection('users').doc(uid).set(data);
+  }
+
     edit(uid: string, data: IUser): Promise<any>{
    return this.db.collection('users').doc(uid).update(data);
   }
