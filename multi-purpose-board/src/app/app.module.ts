@@ -16,6 +16,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './+store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -38,6 +42,17 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     CoreModule,
     SharedModule,
+    EffectsModule.forRoot(),
+    StoreModule.forRoot(reducers),
+    environment.production ? [] : StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: false,
+      features: {
+        pause: false,
+        lock: true,
+        persist: true
+      }
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
   ],
