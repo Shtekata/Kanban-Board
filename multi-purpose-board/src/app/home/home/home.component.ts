@@ -9,7 +9,8 @@ import { AuthService } from 'src/app/core/auth.service';
 })
 export class HomeComponent implements OnInit, DoCheck {
 
-  isLogged = false;
+  // isLogged = false;
+  isLogged$ = this.authService.isLogged$;
 
   constructor(private authService: AuthService, router: Router) { }
 
@@ -17,6 +18,6 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    this.isLogged = this.authService.isLogged;
+    // this.isLogged = this.authService.isLogged;
   }
 }

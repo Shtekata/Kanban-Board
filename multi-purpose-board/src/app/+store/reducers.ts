@@ -3,7 +3,7 @@ import { IUser } from "../shared/interfaces";
 import { authenticate, login, logout, register, update } from "./actions";
 
 export interface IAuthState {
-    currentUser: IUser | null | undefined;
+    currentUser: IUser | null | undefined | any
 };
 
 export const initialState: IAuthState = {

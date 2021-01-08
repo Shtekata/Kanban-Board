@@ -33,7 +33,7 @@
                 </ul>
             </div>
         </div>
-        <div *ngIf='!isLogged' class="logged">
+        <div *ngIf='!(isLogged$|async)' class="logged">
             <ul>
                 <li>
                     <a routerLink='/user/login'>

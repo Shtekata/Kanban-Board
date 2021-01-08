@@ -5,7 +5,7 @@
                 <mat-icon>local_fire_department</mat-icon>
                 <span class="span">Shtekata Kanban Board</span>
             </div>
-            <div class="mini-navbar" *ngIf='user'>
+            <div class="mini-navbar" *ngIf='currentUser$|async'>
                 <ul class="old-task-ul">
                     <li>
                         <a class="old-task-a" routerLink='/past-task'>Old Tasks</a>
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="navbar-picture">
-            <div class="mini-navbar" *ngIf='!user'>
+            <div class="mini-navbar" *ngIf='!(currentUser$|async)'>
                 <ul>
                     <li>
                         <a routerLink='/user/login'>Login</a>
@@ -24,10 +24,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="mini-navbar" *ngIf='user'>
+            <div class="mini-navbar" *ngIf='currentUser$|async'>
                 <ul>
                     <li>
-                        <a routerLink='/user/profile'>{{user?.email}}</a>
+                        <a routerLink='/user/profile'>{{(currentUser$|async)?.email}}</a>
                     </li>
                     <li>
                         <a (click)='logoutHandler()'>Logout</a>
@@ -35,8 +35,8 @@
                 </ul>
             </div>
             <div class="image">
-                <img *ngIf='photoURL&&user' [src]="photoURL" alt="no picture">
-                <img *ngIf='!user||!photoURL' src="../../../assets/images/profile.png" alt="no picture">
+                <img *ngIf='photoURL&&(currentUser$|async)' [src]="photoURL" alt="no picture">
+                <img *ngIf='!(currentUser$|async)||!photoURL' src="../../../assets/images/profile.png" alt="no picture">
             </div>
         </div>
     </mat-toolbar>

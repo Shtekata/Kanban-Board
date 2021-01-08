@@ -7,7 +7,8 @@ import { IUser } from '../shared/interfaces';
 @Injectable()
 export class UserService implements OnDestroy {
 
-  user: any = this.authService.user;
+  // user: any = this.authService.user;
+  currentUser$ = this.authService.currentUser$;
 
   constructor(private authService: AuthService, private db: AngularFirestore) { }
 

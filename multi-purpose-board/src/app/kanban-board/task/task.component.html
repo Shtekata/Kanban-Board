@@ -1,10 +1,6 @@
 <!-- <mat-card class="item" (dblclick)='edit.emit(task)'> -->
 <mat-card class="item" (dblclick)='editTask(task, $event)'>
     <p class="p-title" *ngFor='let partTitle of task.resizedTitle'>{{partTitle}}</p>
-    <!-- <p class="p p339998">{{task.description|shortText339998}}</p>
-    <p class="p p339998">{{task.description|shortText3399982}}</p>
-    <p class="p p339998">{{task.description|shortText3399983}}</p>
-    <p class="p p339998">{{task.description|shortText3399984}}</p>
-    <p class="p p339998">{{task.description|shortText3399985}}</p> -->
+    <!-- <p class="p p339998">{{task.description|shortText339998}}</p> -->
     <p class="p" *ngFor='let desc of task.resizedDesc'>{{desc}}</p>
 </mat-card>

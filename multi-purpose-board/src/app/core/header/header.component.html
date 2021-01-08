@@ -4,7 +4,7 @@
             <p class="logo"><span class="logo">Kanban Board</span></p>
         </div>
         <div class="navbar-picture">
-            <div class="mini-navbar" *ngIf='!isLogged'>
+            <div class="mini-navbar" *ngIf='!(isLogged$|async)'>
                 <ul>
                     <li>
                         <!-- <a (click)='loginHandler()'>Login</a> -->
@@ -15,10 +15,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="mini-navbar" *ngIf='isLogged'>
+            <div class="mini-navbar" *ngIf='isLogged$|async'>
                 <ul>
                     <li>
-                        <a routerLink='/user/profile'>{{user?.email}}</a>
+                        <a routerLink='/user/profile'>{{(currentUser$|async)?.email}}</a>
                     </li>
                     <li>
                         <a (click)='logoutHandler()'>Logout</a>
@@ -26,8 +26,8 @@
                 </ul>
             </div>
             <div class="image">
-                <img *ngIf='photoURL&&user' [src]="photoURL" alt="no picture">
-                <img *ngIf='!user||!photoURL' src="../../../assets/images/profile.png" alt="no picture">
+                <img *ngIf='photoURL&&(currentUser$|async)' [src]="photoURL" alt="no picture">
+                <img *ngIf='!(currentUser$|async)||!photoURL' src="../../../assets/images/profile.png" alt="no picture">
             </div>
         </div>
     </div>

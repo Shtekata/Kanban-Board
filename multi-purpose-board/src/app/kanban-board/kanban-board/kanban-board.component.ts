@@ -31,7 +31,10 @@ export class KanbanBoardComponent implements OnInit {
   }
   // get storageUser(): any { return localStorage.getItem('user'); }
   // get user(): any { return this.storageUser !== null ? JSON.parse(this.storageUser) : null; }
-  get user(): any { return this.authService.user; }
+
+  // get user(): any { return this.authService.user; }
+  currentUser$ = this.authService.currentUser$;
+  get currentUser(): any { return this.currentUser$.subscribe(x => x); }
   
   windowSize: any;
   size = 10;
@@ -66,7 +69,7 @@ export class KanbanBoardComponent implements OnInit {
 
   // drop(event: CdkDragDrop<Task[]>): void{
     drop(event: CdkDragDrop<any>): void{
-    if (event.previousContainer === event.container||!this.user) { return; }
+    if (event.previousContainer === event.container||!this.currentUser) { return; }
     const item = event.previousContainer.data[event.previousIndex];
     this.store.firestore.runTransaction(() => {
       return Promise.all([
@@ -83,7 +86,7 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   edit(list: 'done' | 'todo' | 'inProgress', task: ITask): void{
-    if (!this.user) { return;}
+    if (!this.currentUser) { return;}
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '270px',
       data: {
@@ -100,7 +103,7 @@ export class KanbanBoardComponent implements OnInit {
       //   dataList[taskIndex] = task;
       // }
       if (result.delete && list === 'done') {
-        task.executor = this.user.email;
+        task.executor = this.currentUser.email;
         task.executed_at = new Date().toDateString();
         this.store.collection('old').add(task);
         this.store.collection('done').doc(task.id).delete();
@@ -114,7 +117,7 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   newTask(): void {
-    if (!this.user) { return;}
+    if (!this.currentUser) { return;}
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '270px',
       data: {
@@ -125,7 +128,7 @@ export class KanbanBoardComponent implements OnInit {
       .afterClosed()
       // .subscribe((result: TaskDialogResult) => this.todo.push(result.task));
       .subscribe((result: TaskDialogResult) => {
-        result.task.creator = this.user.email;
+        result.task.creator = this.currentUser.email;
         result.task.created_at = new Date().toDateString();
         this.store.collection('todo').add(result.task);
       });

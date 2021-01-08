@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { map, tap } from 'rxjs/operators';
+import { first, map, tap } from 'rxjs/operators';
 import { IUser } from 'src/app/shared/interfaces';
 import { AuthService } from '../auth.service';
 
@@ -14,22 +14,25 @@ export class HeaderComponent implements OnInit {
 
   hideNavigation = false;
 
-  get isLogged(): boolean{
-    return this.authService.isLogged;
-  }
+  // get isLogged(): boolean{
+  //   return this.authService.isLogged;
+  // }
 
-  get user(): IUser | null{
-    // return this.authService.currentUser;
-    return this.authService.user;
-  }
+  // get user(): IUser | null{
+  //   // return this.authService.currentUser;
+  //   return this.authService.user;
+  // }
+
+  currentUser$ = this.authService.currentUser$;
+  isLogged$ = this.authService.isLogged$;
 
   constructor(private authService: AuthService, private router: Router, title: Title) { }
 
   photoURL: string | null;
 
   ngOnInit(): void {
-      this.loadProfile();
-
+    this.loadProfile();
+    // this.currentUser$.pipe(first()).subscribe((x: any) => { console.log(x); });
   }
 
   logoutHandler(): void {
@@ -41,10 +44,7 @@ export class HeaderComponent implements OnInit {
   loadProfile(): void {
     this.authService.loadProfile().pipe(
       map((x: any) => {
-          return <any>{
-            id: x.payload.id,
-            ...(x.payload.data() as object)
-          };
+          return <any>{ id: x.payload.id, ...(x.payload.data() as object) };
       }),
       tap((x: any) => {
         this.photoURL = x.photoURL; 

@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   localUserStr = localStorage.getItem('user');
   localUser = this.localUserStr != null ? JSON.parse(this.localUserStr) : null;
   userWithUsernameAndTel: IUser = {
+    uid: '',
     displayName: '',
     email: this.localUser.email,
     alternateEmail: '',
