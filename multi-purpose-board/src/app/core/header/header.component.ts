@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { first, map, tap } from 'rxjs/operators';
-import { IUser } from 'src/app/shared/interfaces';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,45 +8,29 @@ import { AuthService } from '../auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('load') load: any;
 
   hideNavigation = false;
 
-  // get isLogged(): boolean{
-  //   return this.authService.isLogged;
-  // }
-
-  // get user(): IUser | null{
-  //   // return this.authService.currentUser;
-  //   return this.authService.user;
-  // }
-
   currentUser$ = this.authService.currentUser$;
   isLogged$ = this.authService.isLogged$;
+  photoUrl$ = this.authService.photoUrl$;
 
-  constructor(private authService: AuthService, private router: Router, title: Title) { }
-
-  photoURL: string | null;
+  constructor(
+    private authService: AuthService, private router: Router, title: Title) { 
+  }
 
   ngOnInit(): void {
-    this.loadProfile();
-    // this.currentUser$.pipe(first()).subscribe((x: any) => { console.log(x); });
+  }
+  
+  ngAfterViewInit(): void {
+    if (this.load) { this.authService.loadProfile(); };
   }
 
   logoutHandler(): void {
-    this.photoURL = null;
     this.authService.logout();
     this.router.navigate(['/']);
   }
-
-  loadProfile(): void {
-    this.authService.loadProfile().pipe(
-      map((x: any) => {
-          return <any>{ id: x.payload.id, ...(x.payload.data() as object) };
-      }),
-      tap((x: any) => {
-        this.photoURL = x.photoURL; 
-      })).subscribe();
-  }
-
 }

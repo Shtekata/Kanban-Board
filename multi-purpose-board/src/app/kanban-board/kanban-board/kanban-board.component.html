@@ -35,8 +35,9 @@
                 </ul>
             </div>
             <div class="image">
-                <img *ngIf='photoURL&&(currentUser$|async)' [src]="photoURL" alt="no picture">
-                <img *ngIf='!(currentUser$|async)||!photoURL' src="../../../assets/images/profile.png" alt="no picture">
+                <img *ngIf='(photoUrl$|async)&&(currentUser$|async)' [src]="photoUrl$|async" alt="no picture">
+                <img *ngIf='!(currentUser$|async)||!(photoUrl$|async)' src="../../../assets/images/profile.png"
+                    alt="no picture">
             </div>
         </div>
     </mat-toolbar>
