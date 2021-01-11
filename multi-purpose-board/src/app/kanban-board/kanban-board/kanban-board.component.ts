@@ -1,5 +1,5 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ITask } from '../../shared/interfaces/task';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent, TaskDialogResult } from './../task-dialog/task-dialog.component';
@@ -23,12 +23,14 @@ const getObservable = (collection: AngularFirestoreCollection<ITask>) => {
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.component.css']
 })
-export class KanbanBoardComponent implements OnInit {
+export class KanbanBoardComponent implements OnInit, AfterViewInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.windowSize = window.innerWidth;
     this.resizeParagraphs(this.windowSize);
   }
+
+  @ViewChild('load') load: any;
  
   currentUser$ = this.authService.currentUser$;
   get currentUser(): any { return this.authService.currentUser; }
@@ -55,24 +57,27 @@ export class KanbanBoardComponent implements OnInit {
   ngOnInit(): void{
     this.windowSize = window.innerWidth;
     this.resizeParagraphs(this.windowSize);
-    this.authService.loadProfile();
-}
+  }
+  
+  ngAfterViewInit(): void {
+    if (this.load) { this.authService.loadProfile(); };
+  }
 
-    drop(event: CdkDragDrop<any>): void{
-    if (event.previousContainer === event.container||!this.currentUser) { return; }
-    const item = event.previousContainer.data[event.previousIndex];
-    this.db.firestore.runTransaction(() => {
-      return Promise.all([
-        this.db.collection(event.previousContainer.id).doc(item.id).delete(),
-        this.db.collection(event.container.id).add(item)
-      ]);
-    });
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
+  drop(event: CdkDragDrop<any>): void{
+  if (event.previousContainer === event.container||!this.currentUser) { return; }
+  const item = event.previousContainer.data[event.previousIndex];
+  this.db.firestore.runTransaction(() => {
+    return Promise.all([
+      this.db.collection(event.previousContainer.id).doc(item.id).delete(),
+      this.db.collection(event.container.id).add(item)
+    ]);
+  });
+  transferArrayItem(
+    event.previousContainer.data,
+    event.container.data,
+    event.previousIndex,
+    event.currentIndex
+  );
   }
 
   edit(list: 'done' | 'todo' | 'inProgress', task: ITask): void{

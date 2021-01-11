@@ -1,23 +1,24 @@
 <app-header></app-header>
-<div *ngIf='task' class="task">
+<div *ngIf="task$|async as task" class="task">
     <div class="task-content">
         <div class="title">
-            <h1>{{task.title}}</h1>
+            <h1>{{task?.title}}</h1>
         </div>
         <div class="side-wrapper">
             <div class="left-side">
-                <p><span class="property">Date of creation: </span><time>{{task.created_at}}</time></p>
-                <p><span class="property">Task creator: </span>{{task.creator}}</p>
+                <p><span class="property">Date of creation: </span><time>{{task?.created_at}}</time></p>
+                <p><span class="property">Task creator: </span>{{task?.creator}}</p>
             </div>
             <div class="right-side">
-                <p><span class="property">Date of execution: </span><time>{{task.executed_at}}</time></p>
-                <p><span class="property">Task executor: </span>{{task.executor}}</p>
+                <p><span class="property">Date of execution: </span><time>{{task?.executed_at}}</time></p>
+                <p><span class="property">Task executor: </span>{{task?.executor}}</p>
             </div>
         </div>
-        <div class="solution"><span class="property">Soluton: </span>{{task.solution}}</div>
-        <div class="description"><span class="property">Description: </span>{{task.description}}</div>
+        <div class="solution"><span class="property">Soluton: </span>{{task?.solution}}</div>
+        <div class="description"><span class="property">Description: </span>{{task?.description}}</div>
         <button class="btn" routerLink='/past-task'>BACK</button>
     </div>
 </div>
-<app-loader [isLoading]='!task'></app-loader>
+<app-loader [isLoading]='!!(isLoading$|async)'></app-loader>
+<!-- <div *ngIf='isLoading$|async'>Loading...</div> -->
 <app-footer></app-footer>

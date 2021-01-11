@@ -38,6 +38,7 @@
                 <img *ngIf='(photoUrl$|async)&&(currentUser$|async)' [src]="photoUrl$|async" alt="no picture">
                 <img *ngIf='!(currentUser$|async)||!(photoUrl$|async)' src="../../../assets/images/profile.png"
                     alt="no picture">
+                <span *ngIf='(currentUser$|async)&&!(photoUrl$|async)' class="load" #load></span>
             </div>
         </div>
     </mat-toolbar>
